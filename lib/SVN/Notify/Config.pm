@@ -1,5 +1,5 @@
 package SVN::Notify::Config;
-$SVN::Notify::Config::VERSION = '0.04';
+$SVN::Notify::Config::VERSION = '0.05';
 
 use strict;
 use YAML;
@@ -11,8 +11,8 @@ SVN::Notify::Config - Config-driven Subversion notification
 
 =head1 VERSION
 
-This document describes version 0.04 of SVN::Notify::Config,
-released October 18, 2004.
+This document describes version 0.05 of SVN::Notify::Config,
+released October 19, 2004.
 
 =head1 SYNOPSIS
 
@@ -21,16 +21,17 @@ Set this as your Subversion repository's F<hooks/post-commit>:
  #!/usr/bin/perl -MSVN::Notify::Config=$0
  --- #YAML:1.0
  '':
-   with-diff: 1
- path:
+   PATH: "/usr/bin:/usr/local/bin"
+ '/path':
    handler: HTML::ColorDiff
    to: root@localhost
- path/ignored:
+ '/path/ignored':
    handler: ~
- path/snapshot:
+ '/path/snapshot':
+   fork: 1
    handler: Snapshot
-   to: '/tmp/tarball-${revision}.tgz'
- path/multitarget:
+   to: "/tmp/tarball-%{%Y%m%d}-${revision}.tar.gz"
+ '/path/multitarget':
    - to: alice@localhost
    - to: bob@localhost
    - to: root@localhost
@@ -51,6 +52,15 @@ sub import {
     my $class = shift;
     my @config = @_ or return;
 
+    local $ENV{PATH} = $ENV{PATH} || do {
+        require Config;
+        require File::Basename;
+        join(
+            $Config::Config{pathsep},
+            ($Config::Config{bin}, File::Basename::dirname($^X)),
+        );
+    };
+
     foreach my $config (@config) {
         $config =~ s/\$0/$0/g;
         $config =~ s/\$(\d+)/$ARGV[$1-1]/eg;
@@ -69,6 +79,7 @@ sub import {
 
 sub new {
     my ($class, $config) = @_;
+
     bless(
         ($config =~ m{^[A-Za-z][-+.A-Za-z0-9]*://}
             ? YAML::Load(scalar `svn cat $config`)
@@ -100,6 +111,7 @@ sub prepare {
         }
     }
 }
+
 sub execute {
     my ($self, %args) = @_;
 
@@ -111,12 +123,12 @@ sub execute {
     my $filter = SVN::Notify->new(
         %args,
         to_regex_map => {
-            map { +( $_ => $keys[$_] ) } (0 .. $#keys)
+            map { +( $_ => ($keys[$_] =~ m!^/?(.*)!g) ) } (0 .. $#keys)
         },
     );
     $filter->prepare_recipients;
 
-    foreach my $key (sort @keys[$filter->{to} =~ /(\d+)/g]) {
+    foreach my $key (sort @keys[$filter->{to} =~ m!(\d+)!g]) {
         my $values = $self->{$key};
         # multiply @actions by @$values
         @actions = map {
@@ -126,7 +138,7 @@ sub execute {
                     %$orig,
                     %$_,
                     (exists $_->{handler})
-                        ? ( handle_path => $key ) : (),
+                        ? ( handle_path => ($key =~ m!^/?(.*)!g) ) : (),
                 }
             } @$values
         } @actions;
@@ -138,10 +150,18 @@ sub execute {
 
         foreach my $key (sort keys %$value) {
             my $vval = $value->{$key};
+            next if ref($vval);
             $vval =~ s{\$\{([-\w]+)\}}
-                      {$value->{$self->_normalize_key($1)}}eg or next;
+                      {$value->{$self->_normalize_key($1)}}eg;
+            $vval =~ s{\%\{(.+?)\}}
+                      {require POSIX; POSIX::strftime($1, localtime(time))}eg;
             $value->{$key} = $vval;
         }
+
+        fork and exit if $value->{fork};
+
+        local %ENV = %ENV;
+        $ENV{$_} = $value->{$_} for grep !/\p{IsLower}/, keys %$value;
 
         my $notify = SVN::Notify->new(%$value);
         $notify->prepare;

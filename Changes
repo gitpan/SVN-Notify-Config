@@ -1,3 +1,10 @@
+[Changes for 0.05 - 2004-10-19]
+
+* Allow patterns beginning with slashes.
+* If $ENV{PATH} is empty, try to establish a reasonable minimum path.
+* Use all-uppercase config flags as environment variables.
+* Implement %{} expansion in config values with strftime().
+
 [Changes for 0.04 - 2004-10-18]
 
 * Really auto-install dependencies in Makefile.PL.
