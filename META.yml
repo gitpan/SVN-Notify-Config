@@ -1,5 +1,5 @@
 name: SVN-Notify-Config
-version: 0.03
+version: 0.04
 abstract: Config-driven Subversion notification
 author: Autrijus Tang <autrijus@autrijus.org>
 license: perl

@@ -8,9 +8,12 @@ abstract	('Config-driven Subversion notification');
 license		('perl');
 version_from	('lib/SVN/Notify/Config.pm');
 
-requires	(
+requires (
     'SVN::Notify'   => 2.22,
     'YAML'          => 0,
 );
+
+include( 'ExtUtils::AutoInstall' );
+auto_install();
 
 WriteAll( sign => 1 );

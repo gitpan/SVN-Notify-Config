@@ -1,5 +1,5 @@
 package SVN::Notify::Config;
-$SVN::Notify::Config::VERSION = '0.03';
+$SVN::Notify::Config::VERSION = '0.04';
 
 use strict;
 use YAML;
@@ -11,7 +11,7 @@ SVN::Notify::Config - Config-driven Subversion notification
 
 =head1 VERSION
 
-This document describes version 0.03 of SVN::Notify::Config,
+This document describes version 0.04 of SVN::Notify::Config,
 released October 18, 2004.
 
 =head1 SYNOPSIS
@@ -30,7 +30,6 @@ Set this as your Subversion repository's F<hooks/post-commit>:
  path/snapshot:
    handler: Snapshot
    to: '/tmp/tarball-${revision}.tgz'
-   pattern: '*.xml'
  path/multitarget:
    - to: alice@localhost
    - to: bob@localhost
@@ -42,7 +41,7 @@ Alternatively, use a config file inside the repository:
 
 =head1 DESCRIPTION
 
-This module is a is a YAML-based configuration wrapper on L<SVN::Notify>.
+This module is a YAML-based configuration wrapper on L<SVN::Notify>.
 
 (More documentations later.  Sorry.)
 
@@ -122,7 +121,14 @@ sub execute {
         # multiply @actions by @$values
         @actions = map {
             my $orig = $_;
-            map { +{ %$orig, %$_ } } @$values
+            map {
+                +{
+                    %$orig,
+                    %$_,
+                    (exists $_->{handler})
+                        ? ( handle_path => $key ) : (),
+                }
+            } @$values
         } @actions;
     }
 

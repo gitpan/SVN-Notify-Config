@@ -1,3 +1,8 @@
+[Changes for 0.04 - 2004-10-18]
+
+* Really auto-install dependencies in Makefile.PL.
+* Support for SVN::Notify::Snapshot by passing handle_path to it.
+
 [Changes for 0.03 - 2004-10-18]
 
 * Auto-install dependencies in Makefile.PL.
