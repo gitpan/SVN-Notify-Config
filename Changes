@@ -1,3 +1,9 @@
+[Changes for 0.06 - 2004-11-23]
+
+* "use SVN::Config::Notify \%config" now works as expected.
+* "use SVN::Config::Notidy 'http://remote.url'" now work as expected.
+* Using the empty string and '/' for rule keys are now supported.
+
 [Changes for 0.05 - 2004-10-19]
 
 * Allow patterns beginning with slashes.

@@ -1,5 +1,5 @@
 package SVN::Notify::Config;
-$SVN::Notify::Config::VERSION = '0.05';
+$SVN::Notify::Config::VERSION = '0.06';
 
 use strict;
 use YAML;
@@ -11,8 +11,8 @@ SVN::Notify::Config - Config-driven Subversion notification
 
 =head1 VERSION
 
-This document describes version 0.05 of SVN::Notify::Config,
-released October 19, 2004.
+This document describes version 0.06 of SVN::Notify::Config,
+released November 23, 2004.
 
 =head1 SYNOPSIS
 
@@ -80,12 +80,15 @@ sub import {
 sub new {
     my ($class, $config) = @_;
 
-    bless(
-        ($config =~ m{^[A-Za-z][-+.A-Za-z0-9]*://}
-            ? YAML::Load(scalar `svn cat $config`)
-            : YAML::LoadFile( $config )),
-        $class,
-    );
+    bless( (
+	(UNIVERSAL::isa($config, 'HASH'))
+	    ? $config :
+        ($config =~ m{^(?:file|svn(?:\+ssh)?)://})
+            ? YAML::Load(scalar `svn cat $config`) :
+        ($config =~ m{^[A-Za-z][-+.A-Za-z0-9]*://})
+            ? do { require LWP::Simple; LWP::Simple::get($config) } 
+            : YAML::LoadFile( $config ),
+    ), $class);
 }
 
 
@@ -123,7 +126,7 @@ sub execute {
     my $filter = SVN::Notify->new(
         %args,
         to_regex_map => {
-            map { +( $_ => ($keys[$_] =~ m!^/?(.*)!g) ) } (0 .. $#keys)
+            map { +( $_ => map "$_(?:)", ($keys[$_] =~ m!^/?(.*)!g) ) } (0 .. $#keys)
         },
     );
     $filter->prepare_recipients;
@@ -146,6 +149,7 @@ sub execute {
 
     foreach my $value (@actions) {
         %$value = (%$value, %args);
+
         $value->{handler} or next;
 
         foreach my $key (sort keys %$value) {
