@@ -14,9 +14,9 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 67e4b7c8d54461fe7551ed4c82e771c384a8a413 Changes
-SHA1 8e0c3c33e80f6daf13437fcd3b470aaa631c2011 MANIFEST
-SHA1 54a20f17f2330efeb10b1f2b3fc3778dc89df38b META.yml
+SHA1 ae9f2db6fd8bc6833d7cd11f814a9fe4fd9ba914 Changes
+SHA1 0ba7a4eef1b5429f0262c6afbaa9c1212ec63756 MANIFEST
+SHA1 feae6b8558858ab0c8ebfb5371612abbdbacf74b META.yml
 SHA1 5beff26808de782e5d89e5402d3f4e50b177dc86 Makefile.PL
 SHA1 99fcd4d522e08dfdc4af2c8f3206cd1f27dd85c7 README
 SHA1 02597776ad22aacd2c8e189594fcbf701390b606 inc/Module/Install.pm
@@ -27,12 +27,12 @@ SHA1 c4ed10cd20914c04f3fff3f8aaf8943372cec114 inc/Module/Install/Makefile.pm
 SHA1 ccf9b6267b5c9e7b35ef129f7e974255955c8867 inc/Module/Install/Metadata.pm
 SHA1 1288f4c4e4ba88e19194d7952eacbd6be2a5b916 inc/Module/Install/Win32.pm
 SHA1 1022a7ab797fc0081ea947f102650362ad925d7a inc/Module/Install/WriteAll.pm
-SHA1 5dc84a4d09d5c55c7ad94e0978cf1d703f3efb35 lib/SVN/Notify/Config.pm
-SHA1 77bbc572ee83f9b7ba5bd39ebb8f31c6d7d0111c t/0-signature.t
+SHA1 d29c296bf9d89fe53024cbaf7a89341666f53015 lib/SVN/Notify/Config.pm
+SHA1 14ec363195c6c82fdf2c348210bdd714203fd411 t/1-basic.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.3 (FreeBSD)
 
-iD8DBQFBco0wtLPdNzw1AaARAlTFAJsGs3H5VriJKr2gHSI09e7uOdgdEgCgnw80
-ry1Bc2sFajF3erXt6w6M6PI=
-=1RKR
+iD8DBQFBcpvktLPdNzw1AaARAuu/AKC9DqP4FoyoBs8LGXE3ZI4/5xkByACfQEip
+iTJFiQzEhrBDOgdis3MqAYg=
+=JfLF
 -----END PGP SIGNATURE-----
