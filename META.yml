@@ -1,11 +1,11 @@
 name: SVN-Notify-Config
-version: 0.01
+version: 0.02
 abstract: Config-driven Subversion notification
 author: Autrijus Tang <autrijus@autrijus.org>
 license: perl
 distribution_type: module
 requires:
-  SVN::Notify: 0
+  SVN::Notify: 2.22
   YAML: 0
 no_index:
   directory:

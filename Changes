@@ -1,0 +1,13 @@
+[Changes for 0.02 - 2004-10-17]
+
+* Path matching logic now actually works.
+* Fix ${revision} interpolation in config values, so
+  '/tmp/tarball-${revision}.tgz' would work.
+* Allow variables with dashes, such as ${with-diff}.
+* Factor out ->new, ->prepare and ->execute, and move the exit() call
+  inside ->import so this module may be used programmatically.
+* Add README and Changes.
+
+[Changes for 0.01 - 2004-10-17]
+
+* Initial CPAN release.

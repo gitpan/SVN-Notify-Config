@@ -1,5 +1,5 @@
 package SVN::Notify::Config;
-$SVN::Notify::Config::VERSION = '0.01';
+$SVN::Notify::Config::VERSION = '0.02';
 
 use strict;
 use YAML;
@@ -11,7 +11,7 @@ SVN::Notify::Config - Config-driven Subversion notification
 
 =head1 VERSION
 
-This document describes version 0.01 of SVN::Notify::Config,
+This document describes version 0.02 of SVN::Notify::Config,
 released October 17, 2004.
 
 =head1 SYNOPSIS
@@ -51,22 +51,39 @@ sub import {
     $config =~ s/\$0/$0/g;
     $config =~ s/\$(\d+)/$ARGV[$1-1]/eg;
 
-    my $self = bless( YAML::LoadFile( $config ), $class );
-    $self->run(
+    my $self = $class->new($config);
+
+    $self->prepare;
+    $self->execute(
         repos_path  => $ARGV[0],
         revision    => $ARGV[1],
     );
+
+    exit;
 }
 
-sub run {
+sub new {
+    my ($class, $config) = @_;
+    bless( YAML::LoadFile( $config ), $class );
+}
+
+sub execute {
     my ($self, %args) = @_;
-    $self->fixup;
 
     my @actions = ({});
     my $path = $args{repos_path};
-    foreach my $key (sort keys %$self) {
-        print "Matching $path against $key\n";
-        $path =~ m{^/$key\b} or next;
+
+    my @keys = sort keys %$self or return;
+
+    my $filter = SVN::Notify->new(
+        %args,
+        to_regex_map => {
+            map { +( $_ => $keys[$_] ) } 0..$#keys
+        },
+    );
+    $filter->prepare_recipients;
+
+    foreach my $key (sort @keys[$filter->{to} =~ /(\d+)/g]) {
         my $values = $self->{$key};
         # multiply @actions by @$values
         @actions = map {
@@ -79,16 +96,21 @@ sub run {
         %$value = (%$value, %args);
         $value->{handler} or next;
 
+        foreach my $key (sort keys %$value) {
+            my $vval = $value->{$key};
+            $vval =~ s{\$\{([-\w]+)\}}
+                      {$value->{$self->normalize_key($1)}}eg or next;
+            $value->{$key} = $vval;
+        }
+
         my $notify = SVN::Notify->new(%$value);
         $notify->prepare;
         $notify->execute;
     }
-
-    exit;
 }
 
-sub fixup {
-    my $self = shift;
+sub prepare {
+    my ($self) = @_;
 
     # Heuristic: if none of our values are refs, cast it into ''.
     $self = { '' => { %$self } } unless grep ref, values %$self;
@@ -104,13 +126,18 @@ sub fixup {
             my @vkeys = sort keys %$value;
             foreach my $vkey (@vkeys) {
                 $vkey =~ /-/ or next;
-                my $nkey = $vkey;
-                $nkey =~ s/-/_/g;
-                $value->{$nkey} = delete $value->{$vkey};
+                $value->{$self->normalize_key($vkey)} = delete $value->{$vkey};
             }
         }
     }
 }
+
+sub normalize_key {
+    my ($self, $key) = @_;
+    $key =~ s/-/_/g;
+    return $key;
+}
+
 
 1;
 

@@ -1,0 +1,22 @@
+This is the README file for SVN::Notify::Config, a YAML-based
+configuration wrapper on the SVN::Notify module.
+
+Please type "perldoc SVN::Notify::Config" after installation to
+see the module usage information.
+
+* Installation
+
+SVN::Notify::Config uses the standard perl module install process:
+
+cpansign -v		# optional; see SIGNATURE for details
+perl Makefile.PL
+make			# or 'nmake' on Win32; see notes below
+make test
+make install
+
+* Copyright
+
+Copyright 2004 by Autrijus Tang <autrijus@autrijus.org>.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
