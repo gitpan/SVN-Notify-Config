@@ -1,5 +1,5 @@
 package SVN::Notify::Config;
-$SVN::Notify::Config::VERSION = '0.06';
+$SVN::Notify::Config::VERSION = '0.07';
 
 use strict;
 use YAML;
@@ -131,7 +131,13 @@ sub execute {
     );
     $filter->prepare_recipients;
 
-    foreach my $key (sort @keys[$filter->{to} =~ m!(\d+)!g]) {
+    # maintain backwards compatibility with SVN::Notify < 2.61
+    my $to = $filter->{to};
+    unless ( UNIVERSAL::isa($to, 'ARRAY') ) {
+	$to = [$to =~ m!(\d+)!g];
+    }
+
+    foreach my $key ( sort map {$keys[$_]} @{$to} ) {
         my $values = $self->{$key};
         # multiply @actions by @$values
         @actions = map {

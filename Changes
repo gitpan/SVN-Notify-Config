@@ -1,3 +1,8 @@
+[Changes for 0.07 - 2006-07-06]
+
+* Changed API in SVN::Notify
+* Under new management
+
 [Changes for 0.06 - 2004-11-23]
 
 * "use SVN::Config::Notify \%config" now works as expected.

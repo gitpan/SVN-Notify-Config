@@ -9,7 +9,7 @@ license		('perl');
 version_from	('lib/SVN/Notify/Config.pm');
 
 requires (
-    'SVN::Notify'   => 2.22,
+    'SVN::Notify'   => 2.62,
     'YAML'          => 0,
 );
 
