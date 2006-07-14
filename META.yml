@@ -1,8 +1,9 @@
 abstract: Config-driven Subversion notification
-author: Autrijus Tang <autrijus@autrijus.org>
+author: John Peacock <jpeacock@cpan.org>
 distribution_type: module
-generated_by: Module::Install version 0.62
+generated_by: Module::Install version 0.63
 license: perl
+module_name: SVN::Notify::Config
 name: SVN-Notify-Config
 no_index: 
   directory: 
@@ -10,5 +11,6 @@ no_index:
     - t
 requires: 
   SVN::Notify: 2.62
+  Test::More: 0
   YAML: 0
-version: 0.07
+version: 0.08

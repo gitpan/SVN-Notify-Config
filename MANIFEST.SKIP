@@ -1,4 +1,5 @@
 .releaserc
+.lwpcookies
 #defaults
 ^Makefile$
 ^blib/

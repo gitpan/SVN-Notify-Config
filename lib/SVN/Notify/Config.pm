@@ -1,5 +1,5 @@
 package SVN::Notify::Config;
-$SVN::Notify::Config::VERSION = '0.07';
+$SVN::Notify::Config::VERSION = '0.08';
 
 use strict;
 use YAML;
@@ -11,8 +11,8 @@ SVN::Notify::Config - Config-driven Subversion notification
 
 =head1 VERSION
 
-This document describes version 0.06 of SVN::Notify::Config,
-released November 23, 2004.
+This document describes version 0.08 of SVN::Notify::Config,
+released July 13, 2006.
 
 =head1 SYNOPSIS
 
@@ -35,6 +35,10 @@ Set this as your Subversion repository's F<hooks/post-commit>:
    - to: alice@localhost
    - to: bob@localhost
    - to: root@localhost
+ '/path/tags':
+   handler: Mirror
+   to: '/path/to/another/dir'
+   tag-regex: "RELEASE_"
 
 Alternatively, use a config file inside the repository:
 
@@ -42,9 +46,11 @@ Alternatively, use a config file inside the repository:
 
 =head1 DESCRIPTION
 
-This module is a YAML-based configuration wrapper on L<SVN::Notify>.
-
-(More documentations later.  Sorry.)
+This module is a YAML-based configuration wrapper on L<SVN::Notify>.  Any
+option of the base L<SVN::Notify> or any of its subclasses can be rendered
+in YAML and will be used to perform the appropriate task.  In essence, your
+hook script B<is> your configuration file, so it can be a very compact way
+to use L<SVN::Notify>.
 
 =cut
 
@@ -81,7 +87,7 @@ sub new {
     my ($class, $config) = @_;
 
     bless( (
-	(UNIVERSAL::isa($config, 'HASH'))
+	( ref($config) eq 'HASH' )
 	    ? $config :
         ($config =~ m{^(?:file|svn(?:\+ssh)?)://})
             ? YAML::Load(scalar `svn cat $config`) :
@@ -100,7 +106,7 @@ sub prepare {
 
     my @keys = sort keys %$self;
     foreach my $key (@keys) {
-        next if UNIVERSAL::isa( $self->{$key} => 'ARRAY' );
+        next if ref($self->{$key}) eq 'ARRAY';
         $self->{$key} = [ { %{ $self->{$key} } } ];
     }
 
@@ -133,7 +139,7 @@ sub execute {
 
     # maintain backwards compatibility with SVN::Notify < 2.61
     my $to = $filter->{to};
-    unless ( UNIVERSAL::isa($to, 'ARRAY') ) {
+    unless ( ref($to) eq 'ARRAY' ) {
 	$to = [$to =~ m!(\d+)!g];
     }
 

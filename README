@@ -1,6 +1,12 @@
 This is the README file for SVN::Notify::Config, a YAML-based
 configuration wrapper on the SVN::Notify module.
 
+UNDER NEW MANAGEMENT!
+
+This module is now being updated by John Peacock <jpeacock@cpan.org>, so
+that it will be available to be used with SVN::Notify::Mirror (see your
+local CPAN mirror).
+
 Please type "perldoc SVN::Notify::Config" after installation to
 see the module usage information.
 
@@ -16,7 +22,8 @@ make install
 
 * Copyright
 
-Copyright 2004-2006 by Audrey Tang <cpan@audreyt.org>.
+Copyright 2006 by John Peacock <jpeacock@cpan.org>
+Portions Copyright 2004-2006 by Audrey Tang <cpan@audreyt.org>.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

@@ -1,19 +1,23 @@
 #!/usr/bin/env perl
 
 use inc::Module::Install;
-
-name		('SVN-Notify-Config');
-author		('Autrijus Tang <autrijus@autrijus.org>');
-abstract	('Config-driven Subversion notification');
-license		('perl');
-version_from	('lib/SVN/Notify/Config.pm');
-
-requires (
-    'SVN::Notify'   => 2.62,
-    'YAML'          => 0,
-);
+license 'perl';
 
 include( 'ExtUtils::AutoInstall' );
 auto_install();
 
-WriteAll( sign => 1 );
+WriteMakefile(
+    NAME                => 'SVN::Notify::Config',
+    AUTHOR              => 'John Peacock <jpeacock@cpan.org>',
+    VERSION_FROM        => 'lib/SVN/Notify/Config.pm',
+    ABSTRACT            => 'Config-driven Subversion notification',
+    PL_FILES            => {},
+    PREREQ_PM => {
+        'SVN::Notify'   => 2.62,
+        'Test::More'    => 0,
+        'YAML'          => 0,
+    },
+    dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
+    clean               => { FILES => 'SVN-Notify-Config-* t/test-repos' },
+    (MM->can('signature_target') ? (SIGN => 1) : ()),
+);
