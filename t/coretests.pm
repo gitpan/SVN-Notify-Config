@@ -9,22 +9,28 @@ my $SVNLOOK = SVN::Notify->find_exe('svnlook');
 
 my $repos_path = "$PWD/t/test-repos";
 
-my $maxrev = 7; # change this later to be the actual number of revs
-
-my @results = LoadFile("$PWD/t/results.yml");
-for ( @results ) {
-    foreach my $key ( keys %{ $_ } ) {
-	if ( $_->{$key} and $_->{$key} =~ /^\$/ ) {
-	    # only one of these will match
-	    $_->{$key} =~ s/\$USER/$USER/;
-	    $_->{$key} =~ s/\$PWD/$PWD/;
-	    $_->{$key} =~ s/\$SVNLOOK/$SVNLOOK/;
-	}
-    }
-}
+my @results = ();
 
 sub reset_all_tests {
     create_test_repos();
+}
+
+sub initialize_results {
+    @results = LoadFile("$PWD/t/".shift);
+    foreach my $result ( @results ) {
+	next if $result =~ /empty/;
+	$result = [$result] unless ref($result) eq 'ARRAY';
+	for ( @$result ) {
+	    foreach my $key ( keys %{ $_ } ) {
+		if ( $_->{$key} and $_->{$key} =~ /^\$/ ) {
+		    # only one of these will match
+		    $_->{$key} =~ s/\$USER/$USER/;
+		    $_->{$key} =~ s/\$PWD/$PWD/;
+		    $_->{$key} =~ s/\$SVNLOOK/$SVNLOOK/;
+		}
+	    }
+	}
+    }
 }
 
 # Create a repository fill it with sample values the first time through
@@ -45,7 +51,7 @@ sub run_tests {
     my $TESTER;
     my $rsync_test = 0;
 
-    for (my $rev = 1; $rev <= $maxrev; $rev++) {
+    for (my $rev = 1; $rev <= $#results; $rev++) {
 	my %args = @_;
 	# Common to all tests
 	$args{'repos-path'} = $repos_path;
@@ -69,14 +75,15 @@ sub _test {
 
     open $TESTER, '-|', _build_command($command, %args);
     while (<$TESTER>) {
+	next if /--- YAML/;
 	$test .= $_;
     }
     close $TESTER;
 
-    $test = Load($test);
+    my @test = Load($test);
 
-    if ( defined($test) ) {
-	is_deeply($test, $expected, 
+    if ( @test ) {
+	is_deeply(\@test, $expected, 
 	    "All object properties match at rev: " . $args{revision});
     } 
     elsif ( $expected =~ /empty/ ) {

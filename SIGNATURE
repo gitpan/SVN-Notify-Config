@@ -15,33 +15,37 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 c3b5f7fa157e5c57edc9051ac3f36ac05bb1a91e Changes
-SHA1 a9b3d2e0cab6458fe0c428d14b18fb691b2d5971 MANIFEST
-SHA1 725932d091f7a1d3d95434f0cc0cf2096a1f7634 MANIFEST.SKIP
-SHA1 bd3cdf9a2c208084ca9a9da0490ccf108c88d017 META.yml
+SHA1 9b6a64720b13e34efc9f23f8d672b5bd5a689e9d MANIFEST
+SHA1 4053ddf83fa3f638b16a9266a6e26cc357189493 MANIFEST.SKIP
+SHA1 fa802ddf01302b0373a77d89a939cb495ca90b00 META.yml
 SHA1 1657035c3e251f2eb795df7bdd4038323d4129c3 Makefile.PL
-SHA1 f743c9b47117e760409174a5c33b242626f0541c README
+SHA1 fbec2bc1886dfcb05eebe1a275a8034999627419 README
 SHA1 2072aec72f1582c35a7ba64d347aa98a8c761b39 inc/ExtUtils/AutoInstall.pm
-SHA1 e974f78178f53c88fb7e3f8d20f7df184d13e1d0 inc/Module/AutoInstall.pm
-SHA1 017bedfcba1e0c72b36301e6ef21b8712b84d175 inc/Module/Install.pm
-SHA1 bcfb15c6a158831c45b5100a7aa94e0f88fced9f inc/Module/Install/AutoInstall.pm
-SHA1 b1a70869c098ba602151631386fc510b5bfd3511 inc/Module/Install/Base.pm
-SHA1 2e9c012e58c778a4a83c5eaea20c3aed306ad0c5 inc/Module/Install/Include.pm
-SHA1 d864f4a0dd148e4651cbe29c54c2ffc94d0f05f7 inc/Module/Install/MakeMaker.pm
-SHA1 176d68fe7c07b6ab7cfe09093078b8127bbde786 inc/Module/Install/Makefile.pm
-SHA1 8b37b38215d14f922b3d5132ce33d11d21d531ba inc/Module/Install/Metadata.pm
-SHA1 93f7c7724f9f96104a02cbe4a08e254e7703c40a lib/SVN/Notify/Config.pm
+SHA1 603bb9de29fb8cba7f13409c546750972eff645d inc/Module/AutoInstall.pm
+SHA1 9b2f9d83bcf77860f53a0c07c90a4a59ad9f5df1 inc/Module/Install.pm
+SHA1 ad955f51ad2c40d4ba35395c27f5ed899a80bf7a inc/Module/Install/AutoInstall.pm
+SHA1 abe32855d75ab13747cf65765af9947b7a8c3057 inc/Module/Install/Base.pm
+SHA1 0606a8b02a420600bc3e2b65ab82f70266784926 inc/Module/Install/Include.pm
+SHA1 657b30c71f439f362378499da70179d1ffd074ee inc/Module/Install/MakeMaker.pm
+SHA1 2249171a2b72cd73ff2c0a06597d29f86e5df456 inc/Module/Install/Makefile.pm
+SHA1 381bb98ea3877bba49ae85e7a7ea130645fd3dbf inc/Module/Install/Metadata.pm
+SHA1 fb3ffe884c49d53442ac23a91ea3aa62b147f450 lib/SVN/Notify/Config.pm
 SHA1 14ec363195c6c82fdf2c348210bdd714203fd411 t/001_basic.t
 SHA1 a6d3f9430e590cda6eb2da62ebb0eab49835d7a2 t/002_config
-SHA1 6e450702b3146e22120e146920cae81a0c51f46f t/002_config.t
-SHA1 963f2bde52b87e29d4d8815fadf16fae73be89d7 t/coretests.pm
+SHA1 8cbc437cea77380a41e5ed49723f2cb3fbba8217 t/002_config.t
+SHA1 de10ef1c59680616dfb3c444533c055db30d57af t/003_config
+SHA1 aaf66f94d51c01dbe268c1a203f6f34351919380 t/003_config.t
+SHA1 83f7cd9b9b9df5830912d3b100c2a18364a1b6fe t/coretests.pm
 SHA1 83b4787928178ddc4ff8f0d48aba6d7a8e0d23b1 t/lib/SVN/Notify/Dummy.pm
 SHA1 a4213e6a965b6bb5bfe00bf55a4e457801ebf662 t/results.yml
+SHA1 8142562545af12797b75b024f60822b72f3f77dd t/results2.yml
 SHA1 af719d83aa699b230d2f1853f2b4e4e94644ad3e t/test-repos.dump
 SHA1 766b4c8a35909cc600b3326ce4e66b605eb72296 t/testconfig
+SHA1 94e51c154d5fc0a84a3298a8448820cc4870105a t/testconfig2
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.2 (GNU/Linux)
 
-iD8DBQFEtvBFimg5mLGPahYRAgQzAKCOUuMQ+J1bWWiFu6H7kQ3eRwTXdgCgkUIY
-YS7E3fkgeyB5Q4ZbKuAvPF0=
-=or4o
+iD8DBQFFRoYHimg5mLGPahYRAuIFAKDM1yKcixEoHRXkX0122/k78Bii/wCaAoJa
+9ZkxS1a6TAjLIjhf1Uy4UCo=
+=F/ct
 -----END PGP SIGNATURE-----

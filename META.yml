@@ -1,7 +1,7 @@
 abstract: Config-driven Subversion notification
 author: John Peacock <jpeacock@cpan.org>
 distribution_type: module
-generated_by: Module::Install version 0.63
+generated_by: Module::Install version 0.64
 license: perl
 module_name: SVN::Notify::Config
 name: SVN-Notify-Config
@@ -13,4 +13,4 @@ requires:
   SVN::Notify: 2.62
   Test::More: 0
   YAML: 0
-version: 0.08
+version: 0.09

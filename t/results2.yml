@@ -1,0 +1,235 @@
+--- empty
+--- empty
+--- empty
+--- empty
+--- empty
+--- empty
+--- empty
+--- empty
+---
+- !!perl/hash:SVN::Notify::Dummy
+  PATH: /usr/bin:/usr/local/bin
+  charset: UTF-8
+  date: '2005-12-26 12:38:16 -0500 (Mon, 26 Dec 2005)'
+  files:
+    A:
+      - project2/trunk/dir3/
+      - project2/trunk/dir3/file6
+      - project2/trunk/dir4/
+      - project2/trunk/dir4/file7
+      - project2/trunk/dir4/file8
+      - project2/trunk/file5
+  from: tags@example.com
+  handle_path: project2/
+  io_layer: encoding(UTF-8)
+  message:
+    - begin work on second project
+  message_size: 28
+  repos_path: $PWD/t/test-repos
+  revision: 8
+  revision_url: ~
+  sendmail: /usr/sbin/sendmail
+  smtp_authtype: PLAIN
+  subject: '[8] begin work on second project'
+  svnlook: $SVNLOOK
+  to:
+    - projleader@example.com
+  user: $USER
+  verbose: 0
+  with_diff: ~
+- !!perl/hash:SVN::Notify::Dummy
+  PATH: /usr/bin:/usr/local/bin
+  charset: UTF-8
+  date: '2005-12-26 12:38:16 -0500 (Mon, 26 Dec 2005)'
+  files:
+    A:
+      - project2/trunk/dir3/
+      - project2/trunk/dir3/file6
+      - project2/trunk/dir4/
+      - project2/trunk/dir4/file7
+      - project2/trunk/dir4/file8
+      - project2/trunk/file5
+  from: tags@example.com
+  handle_path: project2/trunk
+  io_layer: encoding(UTF-8)
+  message:
+    - begin work on second project
+  message_size: 28
+  repos_path: $PWD/t/test-repos
+  revision: 8
+  revision_url: ~
+  sendmail: /usr/sbin/sendmail
+  smtp_authtype: PLAIN
+  subject: '[8] begin work on second project'
+  svnlook: $SVNLOOK
+  to:
+    - trunk@example.com
+    - other@example.com
+  user: $USER
+  user_domain: example.com
+  verbose: 0
+  with_diff: 1
+---
+- !!perl/hash:SVN::Notify::Dummy
+  PATH: /usr/bin:/usr/local/bin
+  charset: UTF-8
+  date: '2005-12-26 12:38:17 -0500 (Mon, 26 Dec 2005)'
+  files:
+    A:
+      - project2/tags/TRUNK-1135538991/
+  from: tags@example.com
+  handle_path: project2/
+  io_layer: encoding(UTF-8)
+  message:
+    - tag trunk before branching
+  message_size: 26
+  repos_path: $PWD/t/test-repos
+  revision: 9
+  revision_url: ~
+  sendmail: /usr/sbin/sendmail
+  smtp_authtype: PLAIN
+  subject: '[9] tag trunk before branching'
+  svnlook: $SVNLOOK
+  to:
+    - projleader@example.com
+  user: $USER
+  verbose: 0
+  with_diff: ~
+- !!perl/hash:SVN::Notify::Dummy
+  PATH: /usr/bin:/usr/local/bin
+  charset: UTF-8
+  cx: ~
+  date: '2005-12-26 12:38:17 -0500 (Mon, 26 Dec 2005)'
+  files:
+    A:
+      - project2/tags/TRUNK-1135538991/
+  from: tags@example.com
+  handle_path: project2/tags
+  io_layer: encoding(UTF-8)
+  message:
+    - tag trunk before branching
+  message_size: 26
+  repos_path: $PWD/t/test-repos
+  revision: 9
+  revision_url: ~
+  smtp: 127.0.0.1
+  smtp_authtype: PLAIN
+  subject: '[9] tag trunk before branching'
+  svnlook: $SVNLOOK
+  to:
+    - projleader@example.com
+  to_regex_map:
+    tags@example.com: PROD_
+  user: $USER
+  verbose: 0
+  with_diff: ~
+---
+- !!perl/hash:SVN::Notify::Dummy
+  PATH: /usr/bin:/usr/local/bin
+  charset: UTF-8
+  date: '2005-12-26 12:38:17 -0500 (Mon, 26 Dec 2005)'
+  files:
+    A:
+      - project2/branches/branch2/
+  from: tags@example.com
+  handle_path: project2/
+  io_layer: encoding(UTF-8)
+  message:
+    - branch trunk for development
+  message_size: 28
+  repos_path: $PWD/t/test-repos
+  revision: 10
+  revision_url: ~
+  sendmail: /usr/sbin/sendmail
+  smtp_authtype: PLAIN
+  subject: '[10] branch trunk for development'
+  svnlook: $SVNLOOK
+  to:
+    - projleader@example.com
+  user: $USER
+  verbose: 0
+  with_diff: ~
+---
+- !!perl/hash:SVN::Notify::Dummy
+  PATH: /usr/bin:/usr/local/bin
+  charset: UTF-8
+  date: '2005-12-26 12:38:20 -0500 (Mon, 26 Dec 2005)'
+  files:
+    A:
+      - project2/branches/branch2/dir5/
+      - project2/branches/branch2/file5.new
+    D:
+      - project2/branches/branch2/dir3/
+      - project2/branches/branch2/file5
+  from: tags@example.com
+  handle_path: project2/
+  io_layer: encoding(UTF-8)
+  message:
+    - restructure branch files
+  message_size: 24
+  repos_path: $PWD/t/test-repos
+  revision: 11
+  revision_url: ~
+  sendmail: /usr/sbin/sendmail
+  smtp_authtype: PLAIN
+  subject: '[11] restructure branch files'
+  svnlook: $SVNLOOK
+  to:
+    - projleader@example.com
+  user: $USER
+  verbose: 0
+  with_diff: ~
+---
+- !!perl/hash:SVN::Notify::Dummy
+  PATH: /usr/bin:/usr/local/bin
+  charset: UTF-8
+  date: '2005-12-26 12:38:22 -0500 (Mon, 26 Dec 2005)'
+  files:
+    A:
+      - project2/tags/TRUNK-1135539568/
+  from: tags@example.com
+  handle_path: project2/
+  io_layer: encoding(UTF-8)
+  message:
+    - tag trunk after merging from branch
+  message_size: 35
+  repos_path: $PWD/t/test-repos
+  revision: 12
+  revision_url: ~
+  sendmail: /usr/sbin/sendmail
+  smtp_authtype: PLAIN
+  subject: '[12] tag trunk after merging from branch'
+  svnlook: $SVNLOOK
+  to:
+    - projleader@example.com
+  user: $USER
+  verbose: 0
+  with_diff: ~
+- !!perl/hash:SVN::Notify::Dummy
+  PATH: /usr/bin:/usr/local/bin
+  charset: UTF-8
+  cx: ~
+  date: '2005-12-26 12:38:22 -0500 (Mon, 26 Dec 2005)'
+  files:
+    A:
+      - project2/tags/TRUNK-1135539568/
+  from: tags@example.com
+  handle_path: project2/tags
+  io_layer: encoding(UTF-8)
+  message:
+    - tag trunk after merging from branch
+  message_size: 35
+  repos_path: $PWD/t/test-repos
+  revision: 12
+  revision_url: ~
+  smtp: 127.0.0.1
+  smtp_authtype: PLAIN
+  subject: '[12] tag trunk after merging from branch'
+  svnlook: $SVNLOOK
+  to:
+    - projleader@example.com
+  to_regex_map:
+    tags@example.com: PROD_
+  user: $USER
+  verbose: 0
+  with_diff: ~

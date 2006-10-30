@@ -18,8 +18,12 @@ SIGNATURE			Public-key signature (added by MakeMaker)
 t/001_basic.t
 t/002_config
 t/002_config.t
+t/003_config
+t/003_config.t
 t/coretests.pm
 t/lib/SVN/Notify/Dummy.pm
 t/results.yml
+t/results2.yml
 t/test-repos.dump
 t/testconfig
+t/testconfig2

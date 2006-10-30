@@ -7,6 +7,12 @@ This module is now being updated by John Peacock <jpeacock@cpan.org>, so
 that it will be available to be used with SVN::Notify::Mirror (see your
 local CPAN mirror).
 
+COMPATIBILITY WARNING!
+
+As of the 0.09 release, SVN::Notify::Config will now fire multiple updates
+for overlapping paths.  This is not backwards compatible because that
+behavior didn't agree with how SVN::Notify handled the corresponding case.
+
 Please type "perldoc SVN::Notify::Config" after installation to
 see the module usage information.
 

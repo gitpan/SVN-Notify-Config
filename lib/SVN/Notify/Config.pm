@@ -1,5 +1,5 @@
 package SVN::Notify::Config;
-$SVN::Notify::Config::VERSION = '0.08';
+$SVN::Notify::Config::VERSION = 0.09;
 
 use strict;
 use YAML;
@@ -11,8 +11,8 @@ SVN::Notify::Config - Config-driven Subversion notification
 
 =head1 VERSION
 
-This document describes version 0.08 of SVN::Notify::Config,
-released July 13, 2006.
+This document describes version 0.09 of SVN::Notify::Config,
+released October 30, 2006.
 
 =head1 SYNOPSIS
 
@@ -24,7 +24,7 @@ Set this as your Subversion repository's F<hooks/post-commit>:
    PATH: "/usr/bin:/usr/local/bin"
  '/path':
    handler: HTML::ColorDiff
-   to: root@localhost
+   to: project-admin@example.com
  '/path/ignored':
    handler: ~
  '/path/snapshot':
@@ -32,9 +32,10 @@ Set this as your Subversion repository's F<hooks/post-commit>:
    handler: Snapshot
    to: "/tmp/tarball-%{%Y%m%d}-${revision}.tar.gz"
  '/path/multitarget':
-   - to: alice@localhost
-   - to: bob@localhost
-   - to: root@localhost
+   to: 
+     - alice@localhost
+     - bob@localhost
+     - root@localhost
  '/path/tags':
    handler: Mirror
    to: '/path/to/another/dir'
@@ -51,6 +52,39 @@ option of the base L<SVN::Notify> or any of its subclasses can be rendered
 in YAML and will be used to perform the appropriate task.  In essence, your
 hook script B<is> your configuration file, so it can be a very compact way
 to use L<SVN::Notify>.
+
+Notes on a few of the options:
+
+=over 4
+
+=item path
+
+Each block is contructed as a L<YAML> hash entry whose key is the path that
+triggers that block's action.  This term is evaluated as a Perl regex and
+all path entries are relative to the repository root.  You can use very
+sophisticated mapping between paths and handlers.  For example, a new tag
+under any project goes to all developers, but regular commits to branch or
+trunk go to that project list only.
+
+=item to
+
+With the core L<SVN::Notify> module, you were required to issue multiple
+to_regex_map entries.  In SVN::Notify::Config, an implicit to_regex_map is
+constructed from the L<path> hash and the array of to: elements of the YAML
+file.
+
+
+=head1 COMPATIBILITY NOTICE
+
+Versions of SVN::Notify::Config prior to 0.09 contained a subtle error in
+logic which meant that multiple overlapping paths would not all fire, but
+rather only the last block defined would fire.  This does not agree with
+core SVN::Notify behavior, where you could have multiple independent
+to_regex_map entries which would all fire.
+
+For example, see the '/path' block in the L<SYNOPSIS>, which should receive
+a ColorDiff e-mail for B<any> commit under the other blocks.  If you need to
+replicate the previous behavior, you can use negative lookahead's.
 
 =cut
 
@@ -92,7 +126,7 @@ sub new {
         ($config =~ m{^(?:file|svn(?:\+ssh)?)://})
             ? YAML::Load(scalar `svn cat $config`) :
         ($config =~ m{^[A-Za-z][-+.A-Za-z0-9]*://})
-            ? do { require LWP::Simple; LWP::Simple::get($config) } 
+            ? do { require LWP::Simple; YAML::Load( LWP::Simple::get($config) ) } 
             : YAML::LoadFile( $config ),
     ), $class);
 }
@@ -157,31 +191,31 @@ sub execute {
                 }
             } @$values
         } @actions;
-    }
 
-    foreach my $value (@actions) {
-        %$value = (%$value, %args);
+	foreach my $value (@actions) {
+	    %$value = (%$value, %args);
 
-        $value->{handler} or next;
+	    $value->{handler} or next;
 
-        foreach my $key (sort keys %$value) {
-            my $vval = $value->{$key};
-            next if ref($vval);
-            $vval =~ s{\$\{([-\w]+)\}}
-                      {$value->{$self->_normalize_key($1)}}eg;
-            $vval =~ s{\%\{(.+?)\}}
-                      {require POSIX; POSIX::strftime($1, localtime(time))}eg;
-            $value->{$key} = $vval;
-        }
+	    foreach my $key (sort keys %$value) {
+		my $vval = $value->{$key};
+		next if ref($vval);
+		$vval =~ s{\$\{([-\w]+)\}}
+			  {$value->{$self->_normalize_key($1)}}eg;
+		$vval =~ s{\%\{(.+?)\}}
+			  {require POSIX; POSIX::strftime($1, localtime(time))}eg;
+		$value->{$key} = $vval;
+	    }
 
-        fork and exit if $value->{fork};
+	    fork and exit if $value->{fork};
 
-        local %ENV = %ENV;
-        $ENV{$_} = $value->{$_} for grep !/\p{IsLower}/, keys %$value;
+	    local %ENV = %ENV;
+	    $ENV{$_} = $value->{$_} for grep !/\p{IsLower}/, keys %$value;
 
-        my $notify = SVN::Notify->new(%$value);
-        $notify->prepare;
-        $notify->execute;
+	    my $notify = SVN::Notify->new(%$value);
+	    $notify->prepare;
+	    $notify->execute;
+	}
     }
 }
 
@@ -196,7 +230,8 @@ sub _normalize_key {
 
 =head1 AUTHORS
 
-Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>
+ Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>
+ John Peacock E<lt>jpeacock@cpan.orgE<gt>
 
 =head1 SEE ALSO
 
@@ -204,7 +239,8 @@ L<SVN::Notify>
 
 =head1 COPYRIGHT
 
-Copyright 2004 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
+Copyright 2006 by John Peacock E<lt>jpeacock@cpan.orgE<gt>.
+Portions copyright 2004-2006 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

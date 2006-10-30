@@ -1,5 +1,12 @@
 .releaserc
 .lwpcookies
+.orig$
+.old$
+.bak$
+.patch$
+.diff$
+\~$
+^t/test-repos(?!\.dump)
 #defaults
 ^Makefile$
 ^blib/
