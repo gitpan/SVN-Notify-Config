@@ -9,7 +9,7 @@ files:
     - project1/trunk/dir1/
     - project1/trunk/dir1/file2
     - project1/trunk/file1
-from: $USER@example.com
+from: jpeacock@example.com
 handle_path: project1/trunk
 io_layer: encoding(UTF-8)
 message:
@@ -25,7 +25,7 @@ svnlook: $SVNLOOK
 to:
   - trunk@example.com
   - other@example.com
-user: $USER
+user: jpeacock
 user_domain: example.com
 verbose: 0
 with_diff: 1
@@ -72,7 +72,7 @@ subject: '[5] simulate branch development'
 svnlook: $SVNLOOK
 to:
   - 'branches@example.com,branch1@example.com'
-user: $USER
+user: jpeacock
 verbose: 0
 with_diff: ~
 --- !perl/SVN::Notify::Dummy
@@ -83,7 +83,7 @@ files:
   A:
     - project1/trunk/dir2/
     - project1/trunk/file3
-from: $USER@example.com
+from: jpeacock@example.com
 handle_path: project1/trunk
 io_layer: encoding(UTF-8)
 message:
@@ -99,7 +99,7 @@ svnlook: $SVNLOOK
 to:
   - trunk@example.com
   - other@example.com
-user: $USER
+user: jpeacock
 user_domain: example.com
 verbose: 0
 with_diff: 1

@@ -73,6 +73,7 @@ sub _test {
     my ($expected, $command, %args) = @_;
     my $test;
 
+    $ENV{'TZ'} = 'EST5EDT'; # fix for RT#22704
     open $TESTER, '-|', _build_command($command, %args);
     while (<$TESTER>) {
 	next if /--- YAML/;
