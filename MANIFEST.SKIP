@@ -5,6 +5,7 @@
 .bak$
 .patch$
 .diff$
+.gz$
 \~$
 ^t/test-repos(?!\.dump)
 #defaults
