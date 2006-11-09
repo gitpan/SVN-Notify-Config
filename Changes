@@ -1,9 +1,44 @@
+[Changes for 0.0904 - 2006-11-08]
+
+* Abandon Module::Install, since it doesn't do anything to make this module
+  easier to install, plus it interferes with the dist() method for EU::MM.
+
+* Make sure to run with the correct perl binary.
+* Autogenerate 'Changes' from repository log files.
+
+[Changes for 0.0903 - 2006-11-03]
+
+* Special cryptograpic release (fix the SIGNATURE file).
+
+[Changes for 0.0902 - 2006-11-01]
+
+* Add logic to locate the svnadmin binary and die without it.
+
+[Changes for 0.0901 - 2006-10-31]
+
+* Fix for RT#22704.  Tests depend on contents of repository dumpfile
+  which have user='jpeacock' and TZ='EST5EDT'.
+
+
+[Changes for 0.09 - 2006-10-30]
+
+* Update to current Module::Install author files.
+* Implement RT#16509: "Allow cascading actions to be defined" and 
+  enhance testing framework to cover it.
+
+[Changes for 0.08 - 2006-07-13]
+
+* Update Module::Install to latest files.
+* Add regression tests (based on SVN::Notify::Mirror files); all tests pass.
+* TODO - 'make clean' doesn't delete the test repository yet.
+* Convert Makefile.PL to use EU::MM syntax (so we can use clean).
+
 [Changes for 0.07 - 2006-07-06]
 
-* Changed API in SVN::Notify
 * Under new management
+* API change in SVN::Notify
 
-[Changes for 0.06 - 2004-11-23]
+[Changes for 0.06 - 2004-11-22]
 
 * "use SVN::Config::Notify \%config" now works as expected.
 * "use SVN::Config::Notidy 'http://remote.url'" now work as expected.
@@ -40,3 +75,4 @@
 [Changes for 0.01 - 2004-10-17]
 
 * Initial CPAN release.
+

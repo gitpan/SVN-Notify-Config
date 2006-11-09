@@ -1,16 +1,16 @@
-abstract: Config-driven Subversion notification
-author: John Peacock <jpeacock@cpan.org>
-distribution_type: module
-generated_by: Module::Install version 0.64
-license: perl
-module_name: SVN::Notify::Config
-name: SVN-Notify-Config
-no_index: 
-  directory: 
-    - inc
-    - t
-requires: 
-  SVN::Notify: 2.62
-  Test::More: 0
-  YAML: 0
-version: 0.0903
+--- #YAML:1.0
+name:                SVN-Notify-Config
+version:             0.0904
+abstract:            Config-driven Subversion notification
+license:             perl
+generated_by:        ExtUtils::MakeMaker version 6.31
+distribution_type:   module
+requires:     
+    SVN::Notify:                   2.62
+    Test::More:                    0
+    YAML:                          0
+meta-spec:
+    url:     http://module-build.sourceforge.net/META-spec-v1.2.html
+    version: 1.2
+author:
+    - John Peacock <jpeacock@cpan.org>
