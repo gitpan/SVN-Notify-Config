@@ -1,7 +1,7 @@
 #!/usr/bin/perl -MSVN::Notify::Config=$0
 --- #YAML:1.0
 '':
-  PATH: "/usr/bin:/usr/local/bin"
+  PATH: "/usr/local/bin:/usr/bin"
 '/project2/branches/branch1':
   handler: Dummy
   from: branch@example.com

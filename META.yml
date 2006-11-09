@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                SVN-Notify-Config
-version:             0.0904
+version:             0.0905
 abstract:            Config-driven Subversion notification
 license:             perl
 generated_by:        ExtUtils::MakeMaker version 6.31

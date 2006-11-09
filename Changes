@@ -1,3 +1,7 @@
+[Changes for 0.0905 - 2006-11-08]
+
+* Messed up the PATH setting, so if users have external binary in more
+  than one path, the deep comparison will fail needlessly.
 [Changes for 0.0904 - 2006-11-08]
 
 * Abandon Module::Install, since it doesn't do anything to make this module
