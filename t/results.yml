@@ -18,7 +18,7 @@ message_size: 27
 repos_path: $PWD/t/test-repos
 revision: 2
 revision_url: ~
-sendmail: /usr/sbin/sendmail
+sendmail: $SENDMAIL
 smtp_authtype: PLAIN
 subject: '[2] start work on first project'
 svnlook: $SVNLOOK
@@ -66,7 +66,7 @@ message_size: 27
 repos_path: $PWD/t/test-repos
 revision: 5
 revision_url: ~
-sendmail: /usr/sbin/sendmail
+sendmail: $SENDMAIL
 smtp_authtype: PLAIN
 subject: '[5] simulate branch development'
 svnlook: $SVNLOOK
@@ -92,7 +92,7 @@ message_size: 18
 repos_path: $PWD/t/test-repos
 revision: 6
 revision_url: ~
-sendmail: /usr/sbin/sendmail
+sendmail: $SENDMAIL
 smtp_authtype: PLAIN
 subject: '[6] merge from branch1'
 svnlook: $SVNLOOK

@@ -1,8 +1,14 @@
-[Changes for 0.0905 - 2006-11-08]
+[Changes for 0.0906 - 2006-11-09]
+
+* Abandon use of EU::MM, since it was making it too hard to get the
+  SIGNATURE file created properly with the dynamic Changes file.
+
+[Changes for 0.0905 - 2006-11-09]
 
 * Messed up the PATH setting, so if users have external binary in more
   than one path, the deep comparison will fail needlessly.
-[Changes for 0.0904 - 2006-11-08]
+
+[Changes for 0.0904 - 2006-11-09]
 
 * Abandon Module::Install, since it doesn't do anything to make this module
   easier to install, plus it interferes with the dist() method for EU::MM.
@@ -23,26 +29,25 @@
 * Fix for RT#22704.  Tests depend on contents of repository dumpfile
   which have user='jpeacock' and TZ='EST5EDT'.
 
-
 [Changes for 0.09 - 2006-10-30]
 
 * Update to current Module::Install author files.
 * Implement RT#16509: "Allow cascading actions to be defined" and 
   enhance testing framework to cover it.
 
-[Changes for 0.08 - 2006-07-13]
+[Changes for 0.08 - 2006-07-14]
 
 * Update Module::Install to latest files.
 * Add regression tests (based on SVN::Notify::Mirror files); all tests pass.
 * TODO - 'make clean' doesn't delete the test repository yet.
 * Convert Makefile.PL to use EU::MM syntax (so we can use clean).
 
-[Changes for 0.07 - 2006-07-06]
+[Changes for 0.07 - 2006-07-07]
 
 * Under new management
 * API change in SVN::Notify
 
-[Changes for 0.06 - 2004-11-22]
+[Changes for 0.06 - 2004-11-23]
 
 * "use SVN::Config::Notify \%config" now works as expected.
 * "use SVN::Config::Notidy 'http://remote.url'" now work as expected.

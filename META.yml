@@ -1,6 +1,6 @@
 ---
 name: SVN-Notify-Config
-version: 0.0906
+version: 0.0907
 author:
   - 'John Peacock <jpeacock@cpan.org>'
 abstract: Config-driven Subversion notification
@@ -13,7 +13,7 @@ requires:
 provides:
   SVN::Notify::Config:
     file: lib/SVN/Notify/Config.pm
-    version: 0.0906
+    version: 0.0907
 generated_by: Module::Build version 0.2805
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

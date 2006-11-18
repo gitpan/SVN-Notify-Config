@@ -28,7 +28,7 @@
   repos_path: $PWD/t/test-repos
   revision: 8
   revision_url: ~
-  sendmail: /usr/sbin/sendmail
+  sendmail: $SENDMAIL
   smtp_authtype: PLAIN
   subject: '[8] begin work on second project'
   svnlook: $SVNLOOK
@@ -58,7 +58,7 @@
   repos_path: $PWD/t/test-repos
   revision: 8
   revision_url: ~
-  sendmail: /usr/sbin/sendmail
+  sendmail: $SENDMAIL
   smtp_authtype: PLAIN
   subject: '[8] begin work on second project'
   svnlook: $SVNLOOK
@@ -86,7 +86,7 @@
   repos_path: $PWD/t/test-repos
   revision: 9
   revision_url: ~
-  sendmail: /usr/sbin/sendmail
+  sendmail: $SENDMAIL
   smtp_authtype: PLAIN
   subject: '[9] tag trunk before branching'
   svnlook: $SVNLOOK
@@ -140,7 +140,7 @@
   repos_path: $PWD/t/test-repos
   revision: 10
   revision_url: ~
-  sendmail: /usr/sbin/sendmail
+  sendmail: $SENDMAIL
   smtp_authtype: PLAIN
   subject: '[10] branch trunk for development'
   svnlook: $SVNLOOK
@@ -170,7 +170,7 @@
   repos_path: $PWD/t/test-repos
   revision: 11
   revision_url: ~
-  sendmail: /usr/sbin/sendmail
+  sendmail: $SENDMAIL
   smtp_authtype: PLAIN
   subject: '[11] restructure branch files'
   svnlook: $SVNLOOK
@@ -196,7 +196,7 @@
   repos_path: $PWD/t/test-repos
   revision: 12
   revision_url: ~
-  sendmail: /usr/sbin/sendmail
+  sendmail: $SENDMAIL
   smtp_authtype: PLAIN
   subject: '[12] tag trunk after merging from branch'
   svnlook: $SVNLOOK

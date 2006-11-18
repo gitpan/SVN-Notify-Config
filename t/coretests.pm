@@ -13,6 +13,7 @@ my $PWD = getcwd;
 my $USER = $ENV{USER};
 my $SVNLOOK  = $ENV{SVNLOOK}  || SVN::Notify->find_exe('svnlook');
 my $SVNADMIN = $ENV{SVNADMIN} || SVN::Notify->find_exe('svnadmin');
+my $SENDMAIL = SVN::Notify->find_exe('sendmail');
 
 if ( !defined($SVNLOOK) ) {
     plan skip_all => "Cannot find svnlook!\n".
@@ -48,6 +49,7 @@ sub initialize_results {
 		    $_->{$key} =~ s/\$USER/$USER/;
 		    $_->{$key} =~ s/\$PWD/$PWD/;
 		    $_->{$key} =~ s/\$SVNLOOK/$SVNLOOK/;
+		    $_->{$key} =~ s/\$SENDMAIL/$SENDMAIL/;
 		}
 	    }
 	}
