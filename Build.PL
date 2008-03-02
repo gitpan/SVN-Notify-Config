@@ -19,7 +19,8 @@ my $mb = $class->new
       dist_author     => 'John Peacock <jpeacock@cpan.org>',
       requires        => {
 	  'Module::Build' => 0.2805,
-	  'SVN::Notify'   => 2.62,
+	  'SVN::Notify'   => 2.70,
+	  'YAML'          => 0.62,
       },
       sign            => 1,
       add_to_cleanup =>

@@ -1,3 +1,12 @@
+[Changes for 0.907 - 2006-11-18]
+
+* Yet another 'test failure' release.  Can't assume any hardcoded
+  paths for executables.
+
+[Changes for 0.0908 - 2008-03-02]
+
+Release to CPAN
+
 [Changes for 0.0906 - 2006-11-09]
 
 * Abandon use of EU::MM, since it was making it too hard to get the

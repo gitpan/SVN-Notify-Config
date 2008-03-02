@@ -2,16 +2,18 @@
 --- empty
 --- !perl/SVN::Notify::Dummy
 PATH: /usr/local/bin:/usr/bin
-charset: UTF-8
+encoding: UTF-8
+diff_encoding: UTF-8
+svn_encoding: UTF-8
 date: '2005-12-26 12:38:12 -0500 (Mon, 26 Dec 2005)'
 files:
   A:
     - project1/trunk/dir1/
     - project1/trunk/dir1/file2
     - project1/trunk/file1
+filters: {}
 from: jpeacock@example.com
 handle_path: project1/trunk
-io_layer: encoding(UTF-8)
 message:
   - start work on first project
 message_size: 27
@@ -31,11 +33,13 @@ verbose: 0
 with_diff: 1
 --- !perl/SVN::Notify::Dummy
 PATH: /usr/local/bin:/usr/bin
-charset: UTF-8
+encoding: UTF-8
+diff_encoding: UTF-8
+svn_encoding: UTF-8
 cx: ~
+filters: {}
 from: tags@example.com
 handle_path: project1/tags
-io_layer: encoding(UTF-8)
 repos_path: $PWD/t/test-repos
 revision: 3
 revision_url: ~
@@ -50,16 +54,18 @@ with_diff: ~
 --- empty
 --- !perl/SVN::Notify::Dummy
 PATH: /usr/local/bin:/usr/bin
-charset: UTF-8
+encoding: UTF-8
+diff_encoding: UTF-8
+svn_encoding: UTF-8
 date: '2005-12-26 12:38:14 -0500 (Mon, 26 Dec 2005)'
 files:
   A:
     - project1/branches/branch1/dir2/
     - project1/branches/branch1/dir2/file4
     - project1/branches/branch1/file3
+filters: {}
 from: branch@example.com
 handle_path: project1/branches/branch1
-io_layer: encoding(UTF-8)
 message:
   - simulate branch development
 message_size: 27
@@ -77,15 +83,17 @@ verbose: 0
 with_diff: ~
 --- !perl/SVN::Notify::Dummy
 PATH: /usr/local/bin:/usr/bin
-charset: UTF-8
+encoding: UTF-8
+diff_encoding: UTF-8
+svn_encoding: UTF-8
 date: '2005-12-26 12:38:15 -0500 (Mon, 26 Dec 2005)'
 files:
   A:
     - project1/trunk/dir2/
     - project1/trunk/file3
+filters: {}
 from: jpeacock@example.com
 handle_path: project1/trunk
-io_layer: encoding(UTF-8)
 message:
   - merge from branch1
 message_size: 18
@@ -105,11 +113,13 @@ verbose: 0
 with_diff: 1
 --- !perl/SVN::Notify::Dummy
 PATH: /usr/local/bin:/usr/bin
-charset: UTF-8
+encoding: UTF-8
+diff_encoding: UTF-8
+svn_encoding: UTF-8
 cx: ~
+filters: {}
 from: tags@example.com
 handle_path: project1/tags
-io_layer: encoding(UTF-8)
 repos_path: $PWD/t/test-repos
 revision: 7
 revision_url: ~

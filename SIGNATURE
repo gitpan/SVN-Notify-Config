@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.54.
+signed via the Module::Signature module, version 0.55.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,14 +14,14 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 95c5be38fd5cce64d713abe4be40dae82c57f7ef Build.PL
-SHA1 459ec3eff339ec7973303dd679c82f254fe996d6 Changes
+SHA1 7523a9f6fc006e67676f7fa3ae2fb6c604f01597 Build.PL
+SHA1 c2e3042e0982b5e10a1bdc8b989d550fb6f563fc Changes
 SHA1 08ab0b0d6a6ce458eac8646f0c7a6c0481de4621 MANIFEST
 SHA1 e0d0e029e3fe2a45bc32a9e4507c2eaf86befe42 MANIFEST.SKIP
-SHA1 1e38b04c3a3577dfe428bd596447ca8bd3721366 META.yml
-SHA1 e86245b6a930636e230cc7607c02cdabe7d1e2fc Makefile.PL
+SHA1 8c58b9f794a86561f3278e0d1bbc0b049ae707b8 META.yml
+SHA1 96dc70ff02cd5002108c56f4579806e68a1a0452 Makefile.PL
 SHA1 fbec2bc1886dfcb05eebe1a275a8034999627419 README
-SHA1 48e8dd27bb0053c53b40364189525550886b3461 lib/SVN/Notify/Config.pm
+SHA1 52bd62ff767da06d722d674a50c791d6dfa48777 lib/SVN/Notify/Config.pm
 SHA1 14ec363195c6c82fdf2c348210bdd714203fd411 t/001_basic.t
 SHA1 a6d3f9430e590cda6eb2da62ebb0eab49835d7a2 t/002_config
 SHA1 8cbc437cea77380a41e5ed49723f2cb3fbba8217 t/002_config.t
@@ -29,15 +29,15 @@ SHA1 de10ef1c59680616dfb3c444533c055db30d57af t/003_config
 SHA1 aaf66f94d51c01dbe268c1a203f6f34351919380 t/003_config.t
 SHA1 cfcb1f6c27af71073b59258d8c7fa8b1f3ca6d6a t/coretests.pm
 SHA1 83b4787928178ddc4ff8f0d48aba6d7a8e0d23b1 t/lib/SVN/Notify/Dummy.pm
-SHA1 6fdc7d44a6893306ac27767c256bcb2d4c117179 t/results.yml
-SHA1 e04f63617927a1e77658c926fc40e4d6da5fcb59 t/results2.yml
+SHA1 c65ad8551c16744da625cf3f00ebabe1a8b5d102 t/results.yml
+SHA1 52530f1f812bdd61742a909debda0a45a239a98f t/results2.yml
 SHA1 af719d83aa699b230d2f1853f2b4e4e94644ad3e t/test-repos.dump
 SHA1 7c1e4116e3169b8dd981db6cc5d16ace6655ba30 t/testconfig
 SHA1 998b569e85c89d4f3b8874f6c7aa0db1bc6e7dcc t/testconfig2
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
+Version: GnuPG v1.4.5 (GNU/Linux)
 
-iD8DBQFFXmPDimg5mLGPahYRAsQUAJ4zSY5pOGzkutT3uPPW0MTeX2sozQCglEUO
-s6q/F0Wp8xt9skqTx4Hpga8=
-=pgT1
+iD8DBQFHyp7dimg5mLGPahYRAjIjAJwKc6Gbp4tX8caLM6USQNCV3Q+KWQCfdIlN
+iQqqyKy7ugTCLOxn0ulTfDU=
+=s7Cg
 -----END PGP SIGNATURE-----

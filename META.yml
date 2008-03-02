@@ -1,6 +1,6 @@
 ---
 name: SVN-Notify-Config
-version: 0.0907
+version: 0.0908
 author:
   - 'John Peacock <jpeacock@cpan.org>'
 abstract: Config-driven Subversion notification
@@ -9,12 +9,13 @@ resources:
   license: http://dev.perl.org/licenses/
 requires:
   Module::Build: 0.2805
-  SVN::Notify: 2.62
+  SVN::Notify: 2.7
+  YAML: 0.62
 provides:
   SVN::Notify::Config:
     file: lib/SVN/Notify/Config.pm
-    version: 0.0907
-generated_by: Module::Build version 0.2805
+    version: 0.0908
+generated_by: Module::Build version 0.2808
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2

@@ -9,7 +9,9 @@
 ---
 - !!perl/hash:SVN::Notify::Dummy
   PATH: /usr/local/bin:/usr/bin
-  charset: UTF-8
+  encoding: UTF-8
+  diff_encoding: UTF-8
+  svn_encoding: UTF-8
   date: '2005-12-26 12:38:16 -0500 (Mon, 26 Dec 2005)'
   files:
     A:
@@ -19,9 +21,9 @@
       - project2/trunk/dir4/file7
       - project2/trunk/dir4/file8
       - project2/trunk/file5
+  filters: {}
   from: tags@example.com
   handle_path: project2/
-  io_layer: encoding(UTF-8)
   message:
     - begin work on second project
   message_size: 28
@@ -39,7 +41,9 @@
   with_diff: ~
 - !!perl/hash:SVN::Notify::Dummy
   PATH: /usr/local/bin:/usr/bin
-  charset: UTF-8
+  encoding: UTF-8
+  diff_encoding: UTF-8
+  svn_encoding: UTF-8
   date: '2005-12-26 12:38:16 -0500 (Mon, 26 Dec 2005)'
   files:
     A:
@@ -49,9 +53,9 @@
       - project2/trunk/dir4/file7
       - project2/trunk/dir4/file8
       - project2/trunk/file5
+  filters: {}
   from: tags@example.com
   handle_path: project2/trunk
-  io_layer: encoding(UTF-8)
   message:
     - begin work on second project
   message_size: 28
@@ -72,14 +76,16 @@
 ---
 - !!perl/hash:SVN::Notify::Dummy
   PATH: /usr/local/bin:/usr/bin
-  charset: UTF-8
+  encoding: UTF-8
+  diff_encoding: UTF-8
+  svn_encoding: UTF-8
   date: '2005-12-26 12:38:17 -0500 (Mon, 26 Dec 2005)'
   files:
     A:
       - project2/tags/TRUNK-1135538991/
+  filters: {}
   from: tags@example.com
   handle_path: project2/
-  io_layer: encoding(UTF-8)
   message:
     - tag trunk before branching
   message_size: 26
@@ -97,15 +103,17 @@
   with_diff: ~
 - !!perl/hash:SVN::Notify::Dummy
   PATH: /usr/local/bin:/usr/bin
-  charset: UTF-8
+  encoding: UTF-8
+  diff_encoding: UTF-8
+  svn_encoding: UTF-8
   cx: ~
   date: '2005-12-26 12:38:17 -0500 (Mon, 26 Dec 2005)'
   files:
     A:
       - project2/tags/TRUNK-1135538991/
+  filters: {}
   from: tags@example.com
   handle_path: project2/tags
-  io_layer: encoding(UTF-8)
   message:
     - tag trunk before branching
   message_size: 26
@@ -126,14 +134,16 @@
 ---
 - !!perl/hash:SVN::Notify::Dummy
   PATH: /usr/local/bin:/usr/bin
-  charset: UTF-8
+  encoding: UTF-8
+  diff_encoding: UTF-8
+  svn_encoding: UTF-8
   date: '2005-12-26 12:38:17 -0500 (Mon, 26 Dec 2005)'
   files:
     A:
       - project2/branches/branch2/
+  filters: {}
   from: tags@example.com
   handle_path: project2/
-  io_layer: encoding(UTF-8)
   message:
     - branch trunk for development
   message_size: 28
@@ -152,7 +162,9 @@
 ---
 - !!perl/hash:SVN::Notify::Dummy
   PATH: /usr/local/bin:/usr/bin
-  charset: UTF-8
+  encoding: UTF-8
+  diff_encoding: UTF-8
+  svn_encoding: UTF-8
   date: '2005-12-26 12:38:20 -0500 (Mon, 26 Dec 2005)'
   files:
     A:
@@ -161,9 +173,9 @@
     D:
       - project2/branches/branch2/dir3/
       - project2/branches/branch2/file5
+  filters: {}
   from: tags@example.com
   handle_path: project2/
-  io_layer: encoding(UTF-8)
   message:
     - restructure branch files
   message_size: 24
@@ -182,14 +194,16 @@
 ---
 - !!perl/hash:SVN::Notify::Dummy
   PATH: /usr/local/bin:/usr/bin
-  charset: UTF-8
+  encoding: UTF-8
+  diff_encoding: UTF-8
+  svn_encoding: UTF-8
   date: '2005-12-26 12:38:22 -0500 (Mon, 26 Dec 2005)'
   files:
     A:
       - project2/tags/TRUNK-1135539568/
+  filters: {}
   from: tags@example.com
   handle_path: project2/
-  io_layer: encoding(UTF-8)
   message:
     - tag trunk after merging from branch
   message_size: 35
@@ -207,15 +221,17 @@
   with_diff: ~
 - !!perl/hash:SVN::Notify::Dummy
   PATH: /usr/local/bin:/usr/bin
-  charset: UTF-8
+  encoding: UTF-8
+  diff_encoding: UTF-8
+  svn_encoding: UTF-8
   cx: ~
   date: '2005-12-26 12:38:22 -0500 (Mon, 26 Dec 2005)'
   files:
     A:
       - project2/tags/TRUNK-1135539568/
+  filters: {}
   from: tags@example.com
   handle_path: project2/tags
-  io_layer: encoding(UTF-8)
   message:
     - tag trunk after merging from branch
   message_size: 35
