@@ -1,5 +1,5 @@
 package SVN::Notify::Config;
-$SVN::Notify::Config::VERSION = 0.0909;
+$SVN::Notify::Config::VERSION = 0.0910;
 
 use strict;
 use YAML;
@@ -11,8 +11,8 @@ SVN::Notify::Config - Config-driven Subversion notification
 
 =head1 VERSION
 
-This document describes version 0.0906 of SVN::Notify::Config,
-released November 9, 2007.
+This document describes version 0.0910 of SVN::Notify::Config,
+released March 5, 2008.
 
 =head1 SYNOPSIS
 
@@ -239,7 +239,7 @@ L<SVN::Notify>
 
 =head1 COPYRIGHT
 
-Copyright 2006 by John Peacock E<lt>jpeacock@cpan.orgE<gt>.
+Copyright (c) 2006-2008 by John Peacock E<lt>jpeacock@cpan.orgE<gt>.
 Portions copyright 2004-2006 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
 
 This program is free software; you can redistribute it and/or modify it

@@ -30,13 +30,13 @@ my $mb = $class->new
 	  ['t/test-repos', ],
     );
 
-exit 0 unless $mb->check_installed_version('SVN::Notify' => 2.70);
 exit 0 unless found_svnlook();
 
 $mb->create_build_script;
 
 sub found_svnlook {
-    require SVN::Notify;
+    eval "use SVN::Notify";
+    return 0 if $@;
     my $svnlook = SVN::Notify->find_exe('svnlook');
     unless ( defined $svnlook ) {
 	warn "This module requires svnlook";
