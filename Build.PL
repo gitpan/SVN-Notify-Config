@@ -22,9 +22,25 @@ my $mb = $class->new
 	  'SVN::Notify'   => 2.70,
 	  'YAML'          => 0.62,
       },
+      build_requires  => {
+	  'Test::Deep'    => 0.100,
+      },
       sign            => 1,
       add_to_cleanup =>
 	  ['t/test-repos', ],
     );
 
+exit 0 unless $mb->check_installed_version('SVN::Notify' => 2.70);
+exit 0 unless found_svnlook();
+
 $mb->create_build_script;
+
+sub found_svnlook {
+    require SVN::Notify;
+    my $svnlook = SVN::Notify->find_exe('svnlook');
+    unless ( defined $svnlook ) {
+	warn "This module requires svnlook";
+	return 0;
+    }
+    return 1;
+}

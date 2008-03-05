@@ -1,5 +1,5 @@
 package SVN::Notify::Config;
-$SVN::Notify::Config::VERSION = 0.0908;
+$SVN::Notify::Config::VERSION = 0.0909;
 
 use strict;
 use YAML;

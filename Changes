@@ -3,6 +3,11 @@
 * Yet another 'test failure' release.  Can't assume any hardcoded
   paths for executables.
 
+[Changes for 0.0909 - 2008-03-05]
+
+Hopefully this will test better everywhere (and skip those testers that
+don't install prereqs properly).
+
 [Changes for 0.0908 - 2008-03-02]
 
 Release to CPAN

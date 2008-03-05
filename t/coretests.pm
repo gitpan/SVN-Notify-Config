@@ -1,5 +1,6 @@
 #!/usr/bin/perl 
 use Test::More;
+use Test::Deep;
 use YAML qw/LoadFile Load Dump/;
 use SVN::Notify;
 use Cwd;
@@ -42,17 +43,6 @@ sub initialize_results {
     foreach my $result ( @results ) {
 	next if $result =~ /empty/;
 	$result = [$result] unless ref($result) eq 'ARRAY';
-	for ( @$result ) {
-	    foreach my $key ( keys %{ $_ } ) {
-		if ( $_->{$key} and $_->{$key} =~ /^\$/ ) {
-		    # only one of these will match
-		    $_->{$key} =~ s/\$USER/$USER/;
-		    $_->{$key} =~ s/\$PWD/$PWD/;
-		    $_->{$key} =~ s/\$SVNLOOK/$SVNLOOK/;
-		    $_->{$key} =~ s/\$SENDMAIL/$SENDMAIL/;
-		}
-	    }
-	}
     }
 }
 
@@ -106,8 +96,10 @@ sub _test {
     my @test = Load($test);
 
     if ( @test ) {
-	is_deeply(\@test, $expected, 
+	for (my $i=0; $i <= $#test; $i++) {
+	    cmp_deeply($test[$i], superhashof($expected->[$i]), 
 	    "All object properties match at rev: " . $args{revision});
+	}
     } 
     elsif ( $expected =~ /empty/ ) {
 	pass "No changes at rev: " . $args{revision};
