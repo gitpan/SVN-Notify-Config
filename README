@@ -18,13 +18,13 @@ see the module usage information.
 
 * Installation
 
-SVN::Notify::Config uses the standard perl module install process:
+SVN::Notify::Config uses Module::Build exclusively:
 
 cpansign -v		# optional; see SIGNATURE for details
-perl Makefile.PL
-make			# or 'nmake' on Win32; see notes below
-make test
-make install
+perl Build.PL
+./Build
+./Build test
+sudo ./Build install
 
 * Copyright
 

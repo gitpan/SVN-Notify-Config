@@ -1,7 +1,7 @@
-[Changes for 0.907 - 2006-11-18]
+[Changes for 0.0911 - 2008-03-08]
 
-* Yet another 'test failure' release.  Can't assume any hardcoded
-  paths for executables.
+Accept the inevitable and delete Makefile.PL.  Hope this provide
+true testing response rather than false positives.
 
 [Changes for 0.091 - 2008-03-05]
 
@@ -16,6 +16,10 @@ don't install prereqs properly).
 [Changes for 0.0908 - 2008-03-02]
 
 Release to CPAN
+
+[Changes for 0.907 - 2008-03-08]
+
+Fix typoed tag
 
 [Changes for 0.0906 - 2006-11-09]
 
